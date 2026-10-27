@@ -58,6 +58,9 @@ fine-tuned model (the "after") — then `combine.py` puts them side by side.
 Run it like this (from this folder):
 
 ```bash
+aws s3 cp s3://the-bucket{pick that from the logs on the console}/output/model.tar.gz model.tar.gz
+mkdir -p merged && tar -xzf model.tar.gz -C merged
+ls merged
 python evaluate.py --model Qwen/Qwen2.5-1.5B-Instruct --label base    # before
 python evaluate.py --model ../merged                   --label tuned   # after
 ```
